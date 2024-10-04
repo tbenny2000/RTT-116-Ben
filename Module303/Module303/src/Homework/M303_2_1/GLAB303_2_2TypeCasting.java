@@ -54,7 +54,7 @@ public class GLAB303_2_2TypeCasting {
 
         g = (byte) dou;
         System.out.println("dou = " + dou + " g = " + g);
-
+        System.out.println("Conversion of long to int.");
 
     }
 }
