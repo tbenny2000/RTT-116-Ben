@@ -40,10 +40,20 @@ public class PA303_2_3OperatorsAndNumbers {
         // Assign 7 to x and 17 to y. Write a comment that indicates what you predict
         // will be the result of the bitwise and operation on x and y.
         // Now use the bitwise AND (&) operator to derive the decimal and binary values, and assign the result to z.
+        int b = 7;
+        int c = 17;
+        int r = b & c;
+        System.out.println("The result of b & c in decimal is: " + r);
+        System.out.println("The result of b & c in binary is: " + Integer.toBinaryString(r));
 
         // EXAMPLE 4
-        // Now, with the preceding values, use the bitwise and operator to calculate the “or” value between x and y.
+        // Now, with the preceding values, use the bitwise and operator to calculate the “or” value between p and o.
         // As before, write a comment that indicates what you predict the values to be before printing them out
+        int p = b;
+        int o = c;
+        int orResult = p | o;
+        System.out.println("The result of p | c (or) in decimal is: " + orResult);
+        System.out.println("The result of p | c (or) in binary is: " + Integer.toBinaryString(orResult));
 
         // EXAMPLE 5
         // Write a program that declares an integer variable, assigns a number, and uses a postfix increment
@@ -55,10 +65,10 @@ public class PA303_2_3OperatorsAndNumbers {
         // Write a program that demonstrates at least three ways to increment a variable by 1 and does this
         // multiple times. Assign a value to an integer variable, print it, increment by 1, print it again,
         // increment by 1, and then print it again.
-        int b = 2;
-        b++;
+        //int b = 2;
+        //b++;
 
-        System.out.println(b);
+        //System.out.println(b);
 
         // EXAMPLE 7
         // Write a program that declares two integer variables: x, and y, and then assigns 5 to x and 8 to y.
