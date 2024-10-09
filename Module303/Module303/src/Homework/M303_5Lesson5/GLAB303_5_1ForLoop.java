@@ -6,11 +6,11 @@ public class GLAB303_5_1ForLoop {
     public static void main(String[] args) {
 
         // Example 1: Display a Text Five Times
-        int n = 5;
-        // for loop
-        for (int i = 1; i <= n; ++i) {
-            System.out.println("Java is fun");
-        }
+//        int n = 5;
+//        // for loop
+//        for (int i = 1; i <= n; ++i) {
+//            System.out.println("Java is fun");
+//        }
 
         // Example 2: Display Sum of n1 Natural Numbers
         int sum = 0;
@@ -34,8 +34,7 @@ public class GLAB303_5_1ForLoop {
             reverse = reverse + original.charAt(i);
         if (original.equals(reverse)) {
             System.out.println("Entered string/number is a palindrome.");
-        }else
-        {
+        } else {
             System.out.println("Entered string/number isn't a palindrome.");
         }
 
@@ -52,7 +51,5 @@ public class GLAB303_5_1ForLoop {
             }
             System.out.println();//new line
         }
-
-        //
     }
 }
