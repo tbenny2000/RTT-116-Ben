@@ -1,4 +1,4 @@
-package Homework.M303_2_1;
+package Homework.M303_2Lesson2;
 
 public class GLAB303_2_2TypeCasting {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Homework.M303_2_1;
+package Homework.M303_2Lesson3;
 
 import java.util.Scanner;
 

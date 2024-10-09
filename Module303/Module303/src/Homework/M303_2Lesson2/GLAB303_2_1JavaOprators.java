@@ -1,4 +1,4 @@
-package Homework.M303_2_1;
+package Homework.M303_2Lesson2;
 
 public class GLAB303_2_1JavaOprators {
     public static void main(String[] args) {
