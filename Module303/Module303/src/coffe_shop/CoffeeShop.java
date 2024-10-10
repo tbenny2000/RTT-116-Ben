@@ -48,8 +48,16 @@ public class CoffeeShop {
         System.out.println("4) Exit");
 
         System.out.println("\nEnter selection: ");
-        int selection = scanner.nextInt();
-        return selection;
+
+        try {
+            int selection = scanner.nextInt();
+            return selection;
+        } catch (Exception e) {
+            System.out.println("Invalid selection " + e.getMessage());
+            return -1;
+        } finally {
+            scanner.nextLine();
+        }
     }
 
     public void addProductToCart() {
@@ -61,12 +69,14 @@ public class CoffeeShop {
         int selection = scanner.nextInt();
         scanner.nextLine();
 
-        // 3 add to the cart
-        // we are subtracting 1 from user input to get the real position in the array
-        // b/c most people do not have a concept of the 0th item in a list
-        Product p = products.get(selection - 1);
-        cart.add(p);
-        System.out.println("Added " + p.getName() + " to your cart.\n");
+        // we want to check that the user has enter a valid product number
+        if (selection < 1 && selection <= products.size()) {
+            Product p = products.get(selection - 1);
+            cart.add(p);
+            System.out.println("Added " + p.getName() + " to your cart.\n");
+        } else {
+            System.out.println("Invalid item selection!");
+        }
 
         // 4 how many do you want to buy
         // 5 make adjustment to quantity on product
@@ -121,7 +131,8 @@ public class CoffeeShop {
                 // we are exiting with a value of 0 means successful exit
                 System.out.println("Goodbye!");
                 System.exit(0);
-
+            } else {
+                System.out.println("Invalid command entered! Try again." + selection + "\n");
             }
         }
 
