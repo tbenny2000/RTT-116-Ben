@@ -18,6 +18,7 @@ public class PA303_2_2Scanner {
         int c = s.nextInt();
         System.out.println(c);
         s.close();
+        System.out.println("****************\n");
 
         // Java Stdin and Stdout II
         //Scanner s = new Scanner(System.in);
@@ -31,6 +32,6 @@ public class PA303_2_2Scanner {
         System.out.println("Int: " + f);
 
         s.close();
-
+        System.out.println("****************\n");
     }
 }

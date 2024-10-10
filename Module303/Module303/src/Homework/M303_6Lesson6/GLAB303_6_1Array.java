@@ -15,6 +15,7 @@ public class GLAB303_6_1Array {
         System.out.println("Third Element: " + age[2]);
         System.out.println("Fourth Element: " + age[3]);
         System.out.println("Fifth Element: " + age[4]);
+        System.out.println("****************\n");
 
         // Example 2: Using for Loop
         // create an array
@@ -26,12 +27,14 @@ public class GLAB303_6_1Array {
         for(int i = 0; i < age1.length; i++) {
             System.out.println(age1[i]);
         }
+        System.out.println("****************\n");
 
         // Example 3: Iterating Over an Array using EnhancedForLoop
         String[] names = { "New York", "Dallas", "Las Vegas", "Florida" };
         for (String name : names) {
             System.out.println(name);
         }
+        System.out.println("****************\n");
 
         // Example 4: Compute the Sum and Average of Array Elements
         int[] numbers = {2, -9, 0, 5, 12, -25, 22, 9, 8, 12};
@@ -60,6 +63,7 @@ public class GLAB303_6_1Array {
         // Here, we are using the length attribute of the array to calculate the size of the array. We then calculate the average using:
         // average = ((double)sum1 / (double)arrayLength);
         // As you can see, we are converting the int value into a double. This is called "type casting” in Java.
+        System.out.println("****************\n");
 
 
         // Example 5: Mean and Standard Deviation
@@ -81,6 +85,7 @@ public class GLAB303_6_1Array {
         // Print results
         System.out.printf("Mean is: %.2f%n", mean);
         System.out.printf("Standard deviation is: %.2f%n", stdDev);
+        System.out.println("****************\n");
 
         // Example 6: Insert an Element at the end of an Array in Java
         int i, element;

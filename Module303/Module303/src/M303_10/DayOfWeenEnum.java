@@ -1,4 +1,6 @@
-package M303_9;
+package M303_10;
 
 public enum DayOfWeenEnum {
+
+    Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday;
 }

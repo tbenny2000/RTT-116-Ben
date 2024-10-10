@@ -18,6 +18,7 @@ public class PA303_2_3OperatorsAndNumbers {
         x = x << 1;
         System.out.println("Decimal value of x after shifting <<1: " + x);
         System.out.println("Binary string version: " + Integer.toBinaryString(x));
+        System.out.println("*********************************\n");
 
 
         // EXAMPLE 2
@@ -34,6 +35,7 @@ public class PA303_2_3OperatorsAndNumbers {
         y = y >> 2;
         System.out.println("Decimal value of y after shifting >> 2: " + y);
         System.out.println("Binary string version: " + Integer.toBinaryString(y));
+        System.out.println("*********************************\n");
 
         // EXAMPLE 3
         // Write a program that declares three int variables: x, y, and z.
@@ -45,6 +47,7 @@ public class PA303_2_3OperatorsAndNumbers {
         int r = b & c;
         System.out.println("The result of b & c in decimal is: " + r);
         System.out.println("The result of b & c in binary is: " + Integer.toBinaryString(r));
+        System.out.println("*********************************\n");
 
         // EXAMPLE 4
         // Now, with the preceding values, use the bitwise and operator to calculate the “or” value between p and o.
@@ -54,28 +57,63 @@ public class PA303_2_3OperatorsAndNumbers {
         int orResult = p | o;
         System.out.println("The result of p | c (or) in decimal is: " + orResult);
         System.out.println("The result of p | c (or) in binary is: " + Integer.toBinaryString(orResult));
+        System.out.println("*********************************\n");
 
         // EXAMPLE 5
         // Write a program that declares an integer variable, assigns a number, and uses a postfix increment
         // operator to increase the value. Print the value before and after the increment operator.
-
+        int number = 5;
+        System.out.println("Before increment; " + number);
+        int newNumber = number++;
+        System.out.println("Value use for newNumber: " + newNumber);
+        System.out.println("After increment; " + number);
+        System.out.println("*********************************\n");
 
 
         // EXAMPLE 6
         // Write a program that demonstrates at least three ways to increment a variable by 1 and does this
         // multiple times. Assign a value to an integer variable, print it, increment by 1, print it again,
         // increment by 1, and then print it again.
-        //int b = 2;
-        //b++;
+        int num = 5;
+        System.out.println("Initial Value: " + num);
 
-        //System.out.println(b);
+        ++num;
+        System.out.println("After pre-increment (++num); " + num);
+
+        num++;
+        System.out.println("After post-increment (num++); " + num);
+
+        num += 1;
+        System.out.println("After increment (num += 1); " + num);
+        System.out.println("*********************************\n");
+
 
         // EXAMPLE 7
-        // Write a program that declares two integer variables: x, and y, and then assigns 5 to x and 8 to y.
-        // Create another variable sum and assign the value of ++x added to y, and print the result.
-        // Notice the value of the sum (should be 14). Now change the increment operator to postfix (x++)
-        // and re-run the program. Notice what the value of the sum is. The first configuration incremented x,
-        // and then calculated the sum, while the second configuration calculated the sum, and then incremented x.
+        // Write a program that declares two integer variables: x, and y, and then assigns 5 to d and 8 to e.
+        // Create another variable sum and assign the value of ++d added to e, and print the result.
+        // Notice the value of the sum (should be 14). Now change the increment operator to postfix (d++)
+        // and re-run the program. Notice what the value of the sum is. The first configuration incremented d,
+        // and then calculated the sum, while the second configuration calculated the sum, and then incremented d.
+        int d = 5;
+        int e = 8;
+
+        // Using pre-increment
+        int sum1 = ++d + e;
+        System.out.println("Using pre-increment (++d):");
+        System.out.println("Value of d: " + d); // d is now 6
+        System.out.println("Value of e: " + e);
+        System.out.println("Sum (++d + e): " + sum1); // sum should be 14
+
+        // Reset d to 5 for the next demonstration
+        d = 5;
+
+        // Using post-increment
+        int sum2 = d++ + e; // Add d to e before incrementing d
+        System.out.println("\nUsing post-increment (d++):");
+        System.out.println("Value of d after calculation: " + d); // d is now 6 after increment
+        System.out.println("Value of e: " + e);
+        System.out.println("Sum (d++ + e): " + sum2); // sum should be 13
+        System.out.println("****************\n");
 
     }
 }

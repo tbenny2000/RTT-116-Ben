@@ -27,6 +27,7 @@ public class GLAB303_5_2WhileLoop {
             else
                 System.out.println("Your guess is too low"); // End of loop
         }
+        System.out.println("****************\n");
 
         // Example #2: An Advanced Math Tool
         // Write a program that generates five single-digit integer subtraction problems.
@@ -66,6 +67,7 @@ public class GLAB303_5_2WhileLoop {
             output += "\n" + number1 + "-" + number2 + "=" + answer +
                     ((number1 - number2 == answer) ? " correct" : " wrong");
         }
+        System.out.println("****************\n");
 
         // Example #3: Controlling a Loop with a Sentinel Value
         // Write a program that reads and calculates the sum of an unspecified number of integers.
@@ -87,8 +89,6 @@ public class GLAB303_5_2WhileLoop {
             data = input2.nextInt();
         }
         System.out.println("The sum is " + sum);
-
+        System.out.println("****************\n");
     }
-
-
 }

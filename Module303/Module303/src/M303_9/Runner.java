@@ -16,7 +16,7 @@ public class Runner {
         c1.setRadius(15.0);
         c1.setName("Circle 1");
         // when the object is created PI should be 3.14 but b/c
-        // we changed on c and it is a static variable it is 
+        // we changed on c and it is a static variable it is
         System.out.println(c1.getName() + " = " + c1.getPI());
 
         // now we change c1 for PI to be 5 and both circle are now 5

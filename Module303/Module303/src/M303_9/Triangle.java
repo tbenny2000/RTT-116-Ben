@@ -21,7 +21,13 @@ public class Triangle extends Shape{
         this.height = height;
     }
 
+    @Override
+    public double calculateArea() {
+        return 0.5 * base * height;
+    }
 
-
-
+    @Override
+    public double calculatePerimeter() {
+        return (2 * base) + (2 * height);
+    }
 }

@@ -6,11 +6,12 @@ public class GLAB303_5_1ForLoop {
     public static void main(String[] args) {
 
         // Example 1: Display a Text Five Times
-//        int n = 5;
-//        // for loop
-//        for (int i = 1; i <= n; ++i) {
-//            System.out.println("Java is fun");
-//        }
+        int n = 5;
+        // for loop
+        for (int i = 1; i <= n; ++i) {
+            System.out.println("Java is fun");
+        }
+        System.out.println("****************\n");
 
         // Example 2: Display Sum of n1 Natural Numbers
         int sum = 0;
@@ -21,6 +22,7 @@ public class GLAB303_5_1ForLoop {
             sum = sum + i;     // sum = sum + i
         }
         System.out.println("Sum = " + sum);
+        System.out.println("****************\n");
 
         // Example 3: Palindrome
         // In this example, we are going to see whether a number is a palindrome.
@@ -37,6 +39,7 @@ public class GLAB303_5_1ForLoop {
         } else {
             System.out.println("Entered string/number isn't a palindrome.");
         }
+        System.out.println("****************\n");
 
         // Example 4: Pyramid
         // Here, the class name is PyramidExample. The main() is declared. After that, the two loop control
@@ -50,6 +53,7 @@ public class GLAB303_5_1ForLoop {
                 System.out.print("* ");
             }
             System.out.println();//new line
+            System.out.println("****************\n");
         }
     }
 }

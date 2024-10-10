@@ -14,6 +14,7 @@ public class GLAB303_3_2ReadingStringFromConsole {
         System.out.println("s1 is " + s1);
         System.out.println("s2 is " + s2);
         System.out.println("s3 is " + s3);
+        System.out.println("****************\n");
 
         // Example 2
         Scanner input2 = new Scanner(System.in);
@@ -21,5 +22,6 @@ public class GLAB303_3_2ReadingStringFromConsole {
         String s = input2.nextLine();
         char ch = s.charAt(0);
         System.out.println("The character entered is " + ch);
+        System.out.println("****************\n");
     }
 }

@@ -14,27 +14,32 @@ public class GLAB303_3_1StringMethods {
         System.out.println("Java".length());  // 4
         System.out.println("Java\n".length()); // 5
         System.out.println("Learn Java".length()); // 10
+        System.out.println("****************\n");
 
         // 2 IsEmpty() method:
         String s1 = "";
         String s2 = "hello";
         System.out.println(s1.isEmpty());      // true
         System.out.println(s2.isEmpty());      // false
+        System.out.println("****************\n");
 
         // 3 Trim() method:
         String s3 = "  hello   ";
         System.out.println(s3 + "how are you");        // without trim()
         System.out.println(s3.trim() + "how are you"); // with trim()
+        System.out.println("****************\n");
 
         // 4 toLowerCase() method:
         String s4 = "HELLO HOW Are You?";
         String s4lower = s4.toLowerCase();
         System.out.println(s4lower);
+        System.out.println("****************\n");
 
         // 5 Java String toUpper() method:
         String s5 = "hello how are you";
         String s5upper = s5.toUpperCase();
         System.out.println(s5upper);
+        System.out.println("****************\n");
 
         // 6 concat() method
         //------By using concat method----
@@ -65,6 +70,7 @@ public class GLAB303_3_1StringMethods {
         // String Supplement is concatenated with character B
         String s9 = "Supplement" + 'B'; // s9 becomes SupplementB
         System.out.println(s9);
+        System.out.println("****************\n");
 
         // 7 split() method
         String vowels = "a::b::c::d:e";
@@ -75,10 +81,12 @@ public class GLAB303_3_1StringMethods {
 
         // converting array to string and printing it
         System.out.println("result1 = " + Arrays.toString(result));
+        System.out.println("****************\n");
 
         // 8 charAt() method: Getting Characters From a String
         String message1 = "Welcome to Java";
         System.out.println("The first character in the message is " + message1.charAt(0));
+        System.out.println("****************\n");
 
         // 9 compareTo() method:
         String s10 ="hello";
@@ -88,12 +96,14 @@ public class GLAB303_3_1StringMethods {
         System.out.println(s10.compareTo(s11)); // 0 because both are equal
         System.out.println(s10.compareTo(s12)); //-1 because "l" is only one time lower than "m"
         System.out.println(s10.compareTo(s13)); // 2 because "h" is 2 times greater than "f"
+        System.out.println("****************\n");
 
         // 10 Substrings() method:
         String str5 = "java is fun";
 
         // extract substring from index 0 to 3
         System.out.println(str5.substring(0, 4));
+        System.out.println("****************\n");
 
         // 11 indexOf() method:
         String str6 = "Java is fun";
@@ -123,6 +133,7 @@ public class GLAB303_3_1StringMethods {
         // substring not in the string
         result1 = str6.lastIndexOf("java");
         System.out.println(result1); // -1
+        System.out.println("****************\n");
 
         // 12 contains() method:
         String str7 = "Learn Java";
@@ -140,6 +151,7 @@ public class GLAB303_3_1StringMethods {
         result2 = str7.contains("");
 
         System.out.println(result2);  // true
+        System.out.println("****************\n");
 
         // 13 replace() method
         String str8 = "abc cba";
@@ -159,6 +171,7 @@ public class GLAB303_3_1StringMethods {
 
         // substring not in the string
         System.out.println("Java".replace("C++", "C"));
+        System.out.println("****************\n");
 
         // 14 Java String replaceAll()
         // regex for sequence of digits
@@ -167,6 +180,7 @@ public class GLAB303_3_1StringMethods {
         // replace all occurrences of numeric
         // digits by a space
         System.out.println(str1.replaceAll(regex, " "));
+        System.out.println("****************\n");
 
         // 16 By Using equals() Method
         String s14 ="PerScholas";
@@ -176,6 +190,7 @@ public class GLAB303_3_1StringMethods {
         System.out.println(s14.equals(s15));//true
         System.out.println(s14.equals(s16));//true
         System.out.println(s14.equals(s17));//false
+        System.out.println("****************\n");
 
         // 17 By Using == operator
         String s18 ="Perscholas";
@@ -183,6 +198,7 @@ public class GLAB303_3_1StringMethods {
         String s20 =new String("Perscholas");
         System.out.println(s18 == s19);//true (because both refer to same instance)
         System.out.println(s18 == s20);//false(because s20 refers to instance created in nonpool)
+        System.out.println("****************\n");
 
         // 18 By Using compareTo() method,
         String s21 ="Perscholas";
@@ -191,6 +207,7 @@ public class GLAB303_3_1StringMethods {
         String s24 ="PerscholasX";
         System.out.println(s21.compareTo(s22)); //0
         System.out.println(s21.compareTo(s23)); // 1(because s21>s23)
-        System.out.println(s21.compareTo(s24)); // -1(because s21<s24 )
+        System.out.println(s21.compareTo(s24)); // -1(because s21<s24)
+        System.out.println("****************\n");
     }
 }

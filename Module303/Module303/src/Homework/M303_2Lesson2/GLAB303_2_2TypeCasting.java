@@ -29,7 +29,7 @@ public class GLAB303_2_2TypeCasting {
         double result = (f * b) + (i / c) - (d * s);
         //Result after all the promotions are done.
         System.out.println("result = " + result);
-        System.out.println("********************************");
+        System.out.println("****************\n");
 
         // ExplicitTest
         double t = 100.04;
@@ -39,6 +39,7 @@ public class GLAB303_2_2TypeCasting {
         System.out.println("Double value "+ t);
         System.out.println("Long value "+l);
         System.out.println("Int value "+ u);
+        System.out.println("****************\n");
 
         byte g;
         int h = 257;
@@ -55,6 +56,7 @@ public class GLAB303_2_2TypeCasting {
         g = (byte) dou;
         System.out.println("dou = " + dou + " g = " + g);
         System.out.println("Conversion of long to int.");
+        System.out.println("****************\n");
 
     }
 }

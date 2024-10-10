@@ -35,7 +35,7 @@ public class GLAB303_2_1JavaOprators {
         double d2 = 12.0F / 8; // result: 1.5
         System.out.println("d1 is " + d1);
         System.out.println("d2 is " + d2);
-        System.out.println("*********************************");
+        System.out.println("****************\n");
 
         // AssignmentOperatorsDemo
         int j, k;
@@ -49,7 +49,7 @@ public class GLAB303_2_1JavaOprators {
         k = j = 10;
         System.out.println("j is : " + j);
         System.out.println("k is : " + k);
-        System.out.println("*********************************");
+        System.out.println("****************\n");
 
         // LogicalOperatorsDemo
         boolean g = true;
@@ -60,7 +60,7 @@ public class GLAB303_2_1JavaOprators {
         System.out.println("g || h: " + (g || h));
         System.out.println("g ^ h : " + (g ^ h));
         System.out.println("!g : " + (!g));
-        System.out.println("*********************************");
+        System.out.println("****************\n");
 
         // RelationalOperatorsDemo
         int t = 10, u = 5;
@@ -79,7 +79,7 @@ public class GLAB303_2_1JavaOprators {
                 + (variable1 == variable2));
 
         System.out.println("variable1 == variable3: " + (variable1 == variable3));
-        System.out.println("*********************************");
+        System.out.println("****************\n");
 
         // UnaryOperatorsDemo
         int sum = +1;
@@ -97,6 +97,7 @@ public class GLAB303_2_1JavaOprators {
         boolean result = false;
         System.out.println(result);
         System.out.println(!result);
+        System.out.println("****************\n");
 
     }
 }
