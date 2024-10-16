@@ -49,15 +49,10 @@ public class CoffeeShop {
 
         System.out.println("\nEnter selection: ");
 
-        try {
+
             int selection = scanner.nextInt();
             return selection;
-        } catch (Exception e) {
-            System.out.println("Invalid selection " + e.getMessage());
-            return -1;
-        } finally {
-            scanner.nextLine();
-        }
+
     }
 
     public void addProductToCart() {
@@ -77,6 +72,7 @@ public class CoffeeShop {
         } else {
             System.out.println("Invalid item selection!");
         }
+        // Product p = products.get(selection - 1);
 
         // 4 how many do you want to buy
         // 5 make adjustment to quantity on product
