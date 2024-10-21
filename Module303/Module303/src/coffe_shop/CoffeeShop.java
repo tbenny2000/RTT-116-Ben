@@ -1,9 +1,7 @@
 package coffe_shop;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class CoffeeShop {
     // we will use this in a couple functions to read input from the user
@@ -18,17 +16,34 @@ public class CoffeeShop {
 
 
     private void initProducts() {
-        Product p1 = new Product("Small coffee", 4.57, 0);
+        Product p1 = new Product("Small Coffee", 4.57, 0);
         products.add(p1);
 
-        Product p2 = new Product("Large coffee", 7.99, 0);
+        Product p2 = new Product("Large Coffee", 7.99, 0);
         products.add(p2);
 
-        Product p3 = new Product("Sugar cookie", 5.89, 0);
+        Product p3 = new Product("Sugar Cookie", 5.89, 0);
         products.add(p3);
 
         Product p4 = new Product("Egg Sandwich", 6.49, 0);
         products.add(p4);
+
+        Product p5 = new Product("Ginger Cookie", 5.49, 0);
+        products.add(p5);
+
+        // lets sort the list by the price
+        // https://stackoverflow.com/questions/40517977/sorting-a-list-with-stream-sorted-in-java
+        // stream will not modify the original list that you streamed
+        // TODO - HW - write this function using a for loop
+        // TODO - HW2 - create a new main menu option that allows you to search the list of produts for a user entered name
+        List<Product> sorted = products.stream().sorted(Comparator.comparing(Product::getPrice)).toList();
+
+        // this just prints the products and when we run this we will have to make a fix
+        // sorted.forEach(p -> System.out.println(p));
+
+        // this will modify the original list...using stream will not modify the original list
+        products.sort(Comparator.comparing(Product::getPrice).thenComparing(Product::getName));
+        products.forEach(p -> System.out.println(p));
     }
 
     private void printProductMenu() {
