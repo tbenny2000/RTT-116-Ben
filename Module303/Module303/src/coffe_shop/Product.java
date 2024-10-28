@@ -6,6 +6,10 @@ public class Product {
     private double price;
     private int quantity;
 
+    public Product() {
+        // nor arguments constructor
+    }
+
     public Product(String name, double price, int quantity) {
         this.name = name;
         this.price = price;
@@ -39,9 +43,9 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
+                "name='" + getName() + '\'' +
+                ", price=$" + getPrice() +
+                ", quantity=" + getQuantity() +
                 '}';
     }
 }

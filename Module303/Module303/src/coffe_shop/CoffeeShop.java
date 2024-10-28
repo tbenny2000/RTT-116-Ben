@@ -16,10 +16,10 @@ public class CoffeeShop {
 
 
     private void initProducts() {
-        Product p1 = new Product("Small Coffee", 4.57, 0);
+        Product p1 = new Product("Small Coffee", 8.45, 0);
         products.add(p1);
 
-        Product p2 = new Product("Large Coffee", 7.99, 0);
+        Product p2 = new Product("Large Coffee", 2.99, 0);
         products.add(p2);
 
         Product p3 = new Product("Sugar Cookie", 5.89, 0);
@@ -31,11 +31,15 @@ public class CoffeeShop {
         Product p5 = new Product("Ginger Cookie", 5.49, 0);
         products.add(p5);
 
+        // load the products form the file
+        List<Product> loaded = new ProductLoader().loadProducts();
+        loaded.addAll(products);
+
+
         // lets sort the list by the price
         // https://stackoverflow.com/questions/40517977/sorting-a-list-with-stream-sorted-in-java
         // stream will not modify the original list that you streamed
-        // TODO - HW - write this function using a for loop
-        // TODO - HW2 - create a new main menu option that allows you to search the list of produts for a user entered name
+
         List<Product> sorted = products.stream().sorted(Comparator.comparing(Product::getPrice)).toList();
 
         // this just prints the products and when we run this we will have to make a fix
@@ -43,8 +47,30 @@ public class CoffeeShop {
 
         // this will modify the original list...using stream will not modify the original list
         products.sort(Comparator.comparing(Product::getPrice).thenComparing(Product::getName));
-        products.forEach(p -> System.out.println(p));
+        //products.forEach(p -> System.out.println(p));
+
+        sortByPrice(sortByPrice(sorted));
     }
+
+    private List<Product> sortByPrice(List<Product> source) {
+        int n = source.size();
+        // Perform bubble sort
+        for (int outer = 0; outer < n - 1; outer++) {
+            for (int inner = 0; inner < n - outer - 1; inner++) {
+                Product p0 = source.get(inner);
+                Product p1 = source.get(inner + 1);
+
+                // Swap if the current product's price is greater than the next one
+                if (p0.getPrice() > p1.getPrice()) {
+                    // Swap the products
+                    source.set(inner, p1);
+                    source.set(inner + 1, p0);
+                }
+            }
+        }
+        return null;  // Return the sorted list
+    }
+
 
     private void printProductMenu() {
         for (int count = 0; count < products.size(); count++) {
@@ -57,16 +83,23 @@ public class CoffeeShop {
         System.out.println("\n");
     }
 
+
+
     private int printMainMenu() throws InvalidInputException {
         System.out.println("1) See product menu");
         System.out.println("2) Purchase product");
         System.out.println("3) Checkout product");
-        System.out.println("4) Exit");
+        System.out.println("4) Product search");
+        if (cart.size() > 0) {
+            System.out.println("Delete product");
+        }
+        System.out.println("5) Delete product");
+        System.out.println("6) Exit");
 
         return readNumberFromUser("\nEnter Selection :");
     }
 
-    // by addding the throws clause here, I am specifically saying this function can (but may)
+    // by adding the throws clause here, I am specifically saying this function can (but may)
     private int readNumberFromUser(String question) throws InvalidInputException {
         System.out.println(question);
         try {
@@ -144,15 +177,20 @@ public class CoffeeShop {
         return found;
     }
 
+    private void searchProductByName(String searchPhrase) {
+        List<Product> searchResults = products.stream()
+                .filter(p -> p.getName().toLowerCase().contains(searchPhrase.toLowerCase()))
+                .collect(Collectors.toList());
+
+        if (searchResults.isEmpty()) {
+            System.out.println("No products match your search.");
+        } else {
+            searchResults.forEach(p -> System.out.println(p.toString()));
+        }
+    }
+
     public void checkout() {
         System.out.println("===Items in your cart ====");
-
-        // list the item in the cart
-//        double subtotal = 0.0;
-//        for (Product item : cart) {
-//            System.out.println(item.getName() + " \t " + item.getQuantity() + "\t $" + item.getPrice() + "\t Total $" + (item.getPrice() * item.getQuantity()));
-//            subtotal = subtotal + item.getPrice();
-//        }
         double subtotal = 0.0;
         for (Product item : cart) {
             double itemTotal = item.getPrice() * item.getQuantity();
@@ -176,7 +214,52 @@ public class CoffeeShop {
         // adding and additional () will cause it to do the math
         double total = (subtotal + tax);
         System.out.printf("Total\t\t $%.2f\n", total);
-        //System.out.printf("Total\t\t $" + String.format("%.2f") + total + "\n");
+    }
+
+    public void productSearch() {
+        System.out.println("Enter a product name to search for\n: ");
+        String search = scanner.nextLine();
+
+        // this line of code filters the list of products based if the search input s in the string
+        List<Product> results = products.stream().filter(p -> p.getName().toLowerCase().contains(search.toLowerCase())).toList();
+
+        // to make it case insensitive then use toLoweCase or toUpperCase
+        // this is a common technique when you want to compare case insensitive
+        // List<Product> results = products.stream().filter(p -> p.getName().contains(search)).toList();
+
+        if (results.isEmpty() ) {
+            System.out.println("No results were fond " + search + ".\n");
+        } else {
+            results.forEach(p -> System.out.println(p));
+        }
+    }
+
+    private Optional<Product> findProductInCart(String productName) {
+        return cart.stream().filter(p -> p.getName().equals(productName)).findFirst();
+    }
+
+    public void deleteProduct() {
+        System.out.println("=========== DELETE PRODUCT ==================");
+
+        //printProductMenu(cart);
+        try {
+            int selection = readNumberFromUser("Enter product number to remove: ");
+
+            // do some error checking here on both of these
+            int quantity = readNumberFromUser("Enter quantity to remove: ");
+
+            // lets assume the user only enters valid data
+            Product remove = cart.get(selection - 1);
+            if (remove.getQuantity() < quantity) {
+                remove.setQuantity(remove.getQuantity() - quantity);
+            } else {
+                // this remove the item from the cart
+                cart.remove(selection - 1);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Invalid product selection");
+        }
     }
 
     public void start() throws InvalidInputException {
@@ -201,6 +284,12 @@ public class CoffeeShop {
                 // checkout
                 checkout();
             } else if (selection == 4) {
+                System.out.println("Enter product name or number: ");
+                String searchPhrase = scanner.nextLine();
+                searchProductByName(searchPhrase);
+            } else if (selection == 5 && cart.size() > 0) {
+                    deleteProduct();
+            } else if (selection == 6) {
                 // exit
                 // we are exiting with a value of 0 means successful exit
                 System.out.println("Goodbye!");
