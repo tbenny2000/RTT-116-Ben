@@ -6,7 +6,7 @@ import lombok.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "orders")
+@Table(name = "payments")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -22,8 +22,8 @@ public class Payment {
     @Column(name = "customer_id")
     private int customerId;
 
-    @Column(name = "check_number", columnDefinition = "DECIMAL")
-    private double checkNumber;
+    @Column(name = "check_number")
+    private String checkNumber;
 
     @Column(name = "payment_date", columnDefinition = "DATE")
     private Date paymentDate;

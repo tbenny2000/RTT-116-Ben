@@ -20,8 +20,7 @@ public class Order {
     private int Id;
 
     @Column(name = "customer_id")
-    private String customerId;
-
+    private int customerId;
 
     @Column(name = "order_date", columnDefinition = "DATE")
     @Temporal(TemporalType.DATE)

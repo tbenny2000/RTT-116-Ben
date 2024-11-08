@@ -23,19 +23,19 @@ public class Product {
     @Column(name = "product_name")
     private String productName;
 
-    @Column(name = "prductline_id")
+    @Column(name = "productline_id")
     private int productLineId;
 
     @Column(name = "product_scale")
-    private int productScale;
+    private String productScale;
 
     @Column(name = "product_vendor")
     private String productVendor;
 
-    @Column(name = "product_description")
+    @Column(name = "product_description", columnDefinition = "TEXT")
     private String productDescription;
 
-    @Column(name = "quantity_in_stock")
+    @Column(name = "quantity_in_stock", columnDefinition = "SMALLINT")
     private int quantityInStock;
 
     @Column(name = "buy_price", columnDefinition = "DECIMAL")

@@ -2,6 +2,10 @@ package org.example.database.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.query.Page;
+
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "employees")
@@ -18,6 +22,10 @@ public class Employee {
     // this defines the DB column
     @Column(name = "id")
     private int Id;
+
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<Customer> customers;
 
     @Column(name = "office_id")
     private int officeId;

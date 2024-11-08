@@ -26,7 +26,7 @@ public class OrderDetail {
     @Column(name = "quantity_ordered")
     private int quantityOrdered;
 
-    @Column(name = "price_each")
+    @Column(name = "price_each", columnDefinition = "DECIMAL")
     private double priceEach;
 
     @Column(name = "order_line_number")
