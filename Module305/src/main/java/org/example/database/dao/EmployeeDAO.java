@@ -6,11 +6,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.Collections;
+import java.util.List;
+
 public class EmployeeDAO {
 
     private SessionFactory factory = new Configuration().configure().buildSessionFactory();
 
-    public void update (Employee employee) {
+    public void updateEmployee (Employee employee) {
         Session session = factory.openSession();
         session.beginTransaction();
         session.merge(employee);
@@ -18,7 +21,7 @@ public class EmployeeDAO {
         session.close();
     }
 
-    public void create (Employee employee) {
+    public void createEmployee (Employee employee) {
         Session session = factory.openSession();
         session.beginTransaction();
         session.persist(employee);
@@ -26,7 +29,7 @@ public class EmployeeDAO {
         session.close();
     }
 
-    public void deleteByProduct (Employee employee) {
+    public void deleteEmployeeByProduct (Employee employee) {
         Session session = factory.openSession();
         session.beginTransaction();
         try {
@@ -40,10 +43,10 @@ public class EmployeeDAO {
         }
     }
 
-    public void deleteById (int Id) {
+    public void deleteEmployeeById (int Id) {
         Session session = factory.openSession();
         session.beginTransaction();
-        Employee emp = (Employee) session.get(Employee.class, Id);
+        Employee empployee = (Employee) session.get(Employee.class, Id);
         try {
             session.persist(Id);
             session.getTransaction().commit();
@@ -55,7 +58,7 @@ public class EmployeeDAO {
         }
     }
 
-    public Employee findById (int employeeId) {
+    public Employee findEmployeeById (int employeeId) {
         String hql = "SELECT emp FROM Employee emp WHERE id = :employeeId";
         Session session = factory.openSession();
 
@@ -72,12 +75,29 @@ public class EmployeeDAO {
         }
     }
 
+    public List<Employee> findByFirstName(String firstName) {
+        String hql = "SELECT emp FROM Employee emp WHERE emp.firstName = :firstName";
+        Session session = factory.openSession();
+
+        TypedQuery<Employee> query = session.createQuery(hql, Employee.class);
+        query.setParameter("firstName", firstName);
+
+        try {
+            return query.getResultList(); // Use getResultList() to fetch multiple results
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList(); // Return an empty list in case of an error
+        } finally {
+            session.close();
+        }
+    }
+
 
 
     public static void main () {
         EmployeeDAO employeeDAO = new EmployeeDAO();
 
-        Employee e = employeeDAO.findById(1501);
+        Employee e = employeeDAO.findEmployeeById(1501);
         System.out.println(e);
     }
 }

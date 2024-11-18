@@ -12,7 +12,7 @@ public class OneToManyExample {
         CustomerDAO customerDAO = new CustomerDAO();
 
         // when this runs hibernate runs the query
-        Employee e = employeeDAO.findById(1501);
+        Employee e = employeeDAO.findEmployeeById(1501);
         System.out.println(e);
 
         for (Customer c : e.getCustomers()) {
@@ -45,7 +45,7 @@ public class OneToManyExample {
         // customerDAO.createCustomer(newCustomer);
 
         // Then !!!!!!!! we sae the employee !!!!!!!
-        employeeDAO.update(e);
+        employeeDAO.updateEmployee(e);
 
     }
 }
