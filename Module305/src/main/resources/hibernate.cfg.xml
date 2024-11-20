@@ -8,7 +8,7 @@
         <!-- setting this to validate will cause hibernate to compare the entity to the database -->
         <property name="hbm2ddl.auto">validate</property>
 
-        <!-- this is telling hibernate what database is being used in the back end .. in our case mysql -->
+        <!-- this is telling hibernate what database is being used in the back end ... in our case mysql -->
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <!-- this is the same connection url that we used in the JDBCDemo -->
