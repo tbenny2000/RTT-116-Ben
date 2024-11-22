@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>This is the page title</h1>
+    <h2 class = color red>This is h2</h2>
+    <h3>This is h3</h3>
+    <h4>This is h4</h4>
+    <h5>This is h5</h5>
+    <h6>This is h6</h6>
+    <p>
+
+        Paragraph for some text.
+
+        What is happening when i type something
+
+        <br />
+        <br />
+        <b>bold text</b>
+        <u>underline</u>
+        <i>italic</i>
+
+        third sentence
+    </p>
+    <div>
+    <ul>
+        <li>Point 1</li>
+        <li>Point 2</li>
+    </ul>
+    <ol>
+        <li>Point 1</li>
+        <li>Point 2</li>
+            <li>Point 3</li>
+            <li>Point 4</li>
+        </ol>
+    </div>
+    before
+    <div>inside div</div>
+    after
+    <span>inside span</span>
+    after
+    <img src ="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt= "An image description">
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+
+    <!-- this is a comment -->
+    <pre>
+        public Student findStudentByEmail(String email) {
+            try (Session session = factory.openSession()) {
+                String hqlQuery = "FROM Student s WHERE s.email = :email";
+                System.out.println("Querying for student with email: " + email);
+    
+                TypedQuery<Student> query = session.createQuery(hqlQuery, Student.class);
+                query.setParameter("email", email);
+    
+                try {
+                    return query.getSingleResult();
+                } catch (Exception e) {
+                    System.out.println("Student not found with email: " + email);
+                    return null;
+                }
+            }
+        }
+    </pre>
+    
+    <p><a href="https://www.google.com" target="_blank">This is a link to google</a></p>
+ 
+
+</body>
+
+</html>
