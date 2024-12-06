@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // !!!!! best practice is to always use let when defining variables and only
+        // use var when you know you need it globally available for the document. 
+        // Have to have a reason why you think it should be global.
+
+        // var becomes a global varialbe accesable by any function in the document
+        var a = 10;
+        var b = "String";
+        var c = true;
+        let x = 15;
+
+        // here y has not yet been defined so lets try to log it out
+        function abc(arg1, arg2) {
+            // let scopes this variable to the containing {}
+            let x = 10;
+            y = 20;
+            console.log(y);
+        }
+
+        // x is not available here b/c it is confied inside the function
+        // y is available here b/c it was defined as a var which is 
+        // global scope to the document
+        
+        abc();
+        console.log(y);
+        // this is similar to system.out.println("")and write to the console on the browser inspect
+        console.log("hello world");
+
+        // == is comparing the value 
+        let e1 = 3 == 3; // isEqual is true
+        let e2 = 3 == "3"; // isEqual is true
+        let e3 = "3" == "3"; // isEqual is true
+
+        // === compares the value and the type
+        let e4 = "3" === 3;
+        let e5 = 3 === 3;
+
+        // when using + if one of your variables is a string then it will do
+        // do string concatination rather than arithmatic
+        let o = "8";
+        console.log(o + 8);
+        console.log("8" + 8);
+        console.log(8 + "8");
+
+        // array work very similar to java
+        let arr = [];
+        arr[1] = null;
+        arr[5] = 2468;
+        arr[10] = 1234;
+        console.log(arr);
+        console.log();
+
+        // split
+        let data = "a, b, c, d";
+        let dataArr = data.split(",")
+        console.log(dataArr)
+
+        // using for ... of it loop over the values of the array
+        // similar to a new style for loop in java to loop over list or array
+        for (let value in arr) {
+            console.loog(value)
+        }
+
+    </script>
+    <h1>JavaScript Basiscs</h1>
+</body>
+</html>

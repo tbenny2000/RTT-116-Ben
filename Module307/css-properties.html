@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
+
+<!-- we got his snippet of code from fonts.google.com -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Parkinsans:wght@300..800&family=Playwrite+BR:wght@100..400&display=swap" rel="stylesheet">
+
+
+
+
+    <link rel="stylesheet" href="pub/css/external.css">
+</head>
+<body>
+    <h1> CSS Examples </h1>
+    <!-- this is what is called internal styling -->
+    <style>
+        /* this will apply the css properties to all p and span tags 
+        in the document */
+        p, span {
+            color: rgb(228, 15, 15);
+            background-color: green;
+            font-size: 30px;
+            font-weight: 400;
+            border-radius: 25px;
+        }
+        /* all customclass uses a . (dot) */
+        .customclass {
+            color: blue;
+            margin: 10px; /* this will apply to all 4 sides */
+            margin: 10px 10px 10px 10px; /* top right bottom left */
+            padding-bottom: 15px;
+            padding-left: 10px;
+            padding-right: 20px;
+            background-color: bisque;
+            border-top: 1px solid black;
+        }
+        #anything {
+            background-color: aliceblue;
+        }
+
+        /* this class is applied when the mouse is not over the elemenet*/
+        .pseudo {
+            background-color: brown;
+        }
+
+        /* this class is applied when the mouse is over the tag*/
+        .pseudo:hover {
+            background-color: blue;
+            padding: 15px;
+        }
+
+        /* this class is applied only when the mouse is clicked over the tag*/
+        .pseudo:active {
+            background-color: chartreuse;
+            padding: 20px;
+        }
+
+
+    </style>
+
+    <p style="font-family: Playwrite BR, cursive;">This has some text in it. This is a cursive font</p>
+    <p style="text-align: right;">This is the second paragraph</p>
+
+    <!-- this is inline styling where we use the style attribute
+     on the html tag itself. This stylying has the highest
+     presidence and wil overwrite internal and external CSS-->
+
+    <div class="customclass"> This is paragraph 4</div>
+    <div class="customclass"> This is paragraph 4</div>
+
+    <div id="anything"> This is more text with an id on the div</div>
+
+    <span style="color: yellow;">This is a span</span>
+
+    <!-- This is will not display but it is sill in the code 
+     you can hide an element using style="display: none;"-->
+    <div style="display: none;"> This will not display </div>
+
+    <div class="defined-external"> This is defined in external.css </div>
+
+    <div class="pseudo"> Hover over me to change color </div>
+
+
+
+    
+</body>
+</html>
