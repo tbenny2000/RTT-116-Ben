@@ -34,6 +34,27 @@
         // this is similar to system.out.println("")and write to the console on the browser inspect
         console.log("hello world");
 
+        // this is 
+        let v1 = "abc";
+        // let v1 = "xyz";
+
+        // var will
+        var v2 = "abc";
+        var v2 = "xyz";
+
+
+        //                  yyyy-MM-dd HH:mm:ss
+        let now = new Date("2019-01-24 18:31:44")
+
+        //                   DDD  MMM  dd  yyyy HH:mm:ss
+        let date = new Date("Thu Jan 29 2009 08:31:44")
+
+                        // 1 == 1
+                        // true is the actual output printed to the console
+        console.log(now.getMonth() === date.getMonth());
+
+        array.forEach()
+
         // == is comparing the value 
         let e1 = 3 == 3; // isEqual is true
         let e2 = 3 == "3"; // isEqual is true
@@ -68,6 +89,22 @@
         for (let value in arr) {
             console.loog(value)
         }
+
+
+        // for each
+        //         1, 4, 9, 16, 25,
+        //         ,25, 16, 9, 4, 1
+        let kba19 = [1, 2, 3, 4, 5, ]
+        kba19.forEach(function (value, index, array) {
+            array[index] = value* value
+        });
+        console.log(kba19.reverse().filter(function (x) {
+            // when autoboxing from a number to a boolean...in javascript
+            // when the results is 0 it means it will remove it from the list
+            return x % 5
+        }));
+
+
 
     </script>
     <h1>JavaScript Basiscs</h1>
