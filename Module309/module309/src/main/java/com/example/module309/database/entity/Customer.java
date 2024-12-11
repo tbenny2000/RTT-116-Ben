@@ -1,9 +1,7 @@
-package org.example.database.entity;
+package com.example.module309.database.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.awt.print.Book;
 
 @Entity
 @Table(name = "customers")
@@ -12,7 +10,6 @@ import java.awt.print.Book;
 @Data
 @Getter
 @Setter
-@ToString
 public class Customer {
 
     @Id
@@ -32,10 +29,10 @@ public class Customer {
     private String customerName;
 
     @Column(name = "contact_lastname")
-    private String contactLastname;
+    private String contactLastName;
 
     @Column(name = "contact_firstname")
-    private String contactFirstname;
+    private String contactFirstName;
 
     @Column(name = "phone")
     private String phone;
@@ -60,4 +57,24 @@ public class Customer {
 
     @Column(name = "credit_limit", columnDefinition = "DECIMAL")
     private double creditLimit;
+
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "Id=" + Id +
+                ", salesRepEmployeeId=" + salesRepEmployeeId +
+                ", customerName='" + customerName + '\'' +
+                ", contactLastName='" + contactLastName + '\'' +
+                ", contactFirstName='" + contactFirstName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", addressLine1='" + addressLine1 + '\'' +
+                ", addressLine2='" + addressLine2 + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", country='" + country + '\'' +
+                ", creditLimit=" + creditLimit +
+                '}';
+    }
 }
