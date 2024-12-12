@@ -21,10 +21,12 @@ public class IndexController {
 
         // this is our index.jsp
         response.setViewName("index");
-        List<Customer> firstName = customerDao.findByFirstName("Alexander");
-        for (Customer c : firstName) {
+        List<Customer> firstNames = customerDao.findByFirstName("Alexander");
+        for (Customer c : firstNames) {
             System.out.println(c.toString());
         }
+
+        response.addObject("names", firstNames);
 
         return response;
     }
