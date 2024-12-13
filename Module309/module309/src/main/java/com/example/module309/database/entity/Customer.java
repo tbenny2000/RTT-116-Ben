@@ -29,10 +29,10 @@ public class Customer {
     private String customerName;
 
     @Column(name = "contact_lastname")
-    private String contactLastName;
+    private String contactLastname;
 
     @Column(name = "contact_firstname")
-    private String contactFirstName;
+    private String contactFirstname;
 
     @Column(name = "phone")
     private String phone;
@@ -65,8 +65,8 @@ public class Customer {
                 "Id=" + Id +
                 ", salesRepEmployeeId=" + salesRepEmployeeId +
                 ", customerName='" + customerName + '\'' +
-                ", contactLastName='" + contactLastName + '\'' +
-                ", contactFirstName='" + contactFirstName + '\'' +
+                ", contactLastName='" + contactLastname + '\'' +
+                ", contactFirstName='" + contactFirstname + '\'' +
                 ", phone='" + phone + '\'' +
                 ", addressLine1='" + addressLine1 + '\'' +
                 ", addressLine2='" + addressLine2 + '\'' +

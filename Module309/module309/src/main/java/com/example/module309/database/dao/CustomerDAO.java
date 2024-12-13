@@ -8,8 +8,8 @@ import java.util.List;
 
 
 public interface CustomerDAO extends JpaRepository<Customer, Long> {
-    @Query("select c from Customer c where c.contactFirstName = :firstName")
-    List<Customer> findByFirstName(String firstName);
+    @Query("select c from Customer c where c.contactFirstname = :firstName")
+    List<Customer> findByFirstname(String firstName);
 
-    List<Customer> findByContactLastName(String LastName);
+    List<Customer> findByContactLastname(String lastName);
 }
