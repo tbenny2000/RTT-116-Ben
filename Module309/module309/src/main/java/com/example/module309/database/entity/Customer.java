@@ -4,23 +4,28 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "customers")
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "customers")
 public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer Id;
+    private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "sales_rep_employee_id", nullable = false)
-    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sales_rep_employee_id")
+    @EqualsAndHashCode.Exclude
     private Employee employee;
+
+    // now that we have the @ManyToOne mapping using the same column name for the @JoinColumn
+    // hibernate is confused as the colum sales_rep_employee_id is not ambigous to hibernate
+    // to solve this problem, we make this field read only by adding insertable = false and updateable = false
+    // TL;DR; - The foreign key must be marked as read only for hibernate
 
     @Column(name = "sales_rep_employee_id", insertable = false, updatable = false)
     private Integer salesRepEmployeeId;
@@ -62,7 +67,7 @@ public class Customer {
     @Override
     public String toString() {
         return "Customer{" +
-                "Id=" + Id +
+                "id=" + id +
                 ", salesRepEmployeeId=" + salesRepEmployeeId +
                 ", customerName='" + customerName + '\'' +
                 ", contactLastName='" + contactLastname + '\'' +

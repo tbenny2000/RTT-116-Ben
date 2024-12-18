@@ -2,33 +2,31 @@ package com.example.module309.database.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.query.Page;
 
 import java.util.List;
-import java.util.Set;
 
 @Entity
-@Table(name = "employees")
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "employees")
 public class Employee {
     // the @Id tells hibernate that this is the primary key for this entity
     @Id
-    // this tells hibernate that the database will auto increment the next Id for the new record in the DB
+    // this tells hibernate that the database will auto increment the next id for the new record in the DB
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // this defines the DB column
     @Column(name = "id")
-    private int Id;
+    private Integer id;
 
     @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<Customer> customers;
 
     @Column(name = "office_id")
-    private int officeId;
+    private Integer officeId;
 
     @Column(name = "lastname")
     private String lastName;

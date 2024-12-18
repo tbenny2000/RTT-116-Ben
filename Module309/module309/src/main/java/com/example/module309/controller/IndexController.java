@@ -2,7 +2,7 @@ package com.example.module309.controller;
 
 import com.example.module309.database.dao.CustomerDAO;
 import com.example.module309.database.entity.Customer;
-import jakarta.websocket.server.PathParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,16 +13,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+@Slf4j
 @Controller
 public class IndexController {
 
-    // esentially spring boot has created the dao for us when it stated up and is already in memory all we have to do is
-    // autowire it and we can .. this is analagous to createing a new DAO in module 305
+    // essentially spring boot has created the dao for us when it stated up and is already in memory all we have to do is
+    // autowire it and we can .. this is analogous to creating a new DAO in module 305
     @Autowired
     private CustomerDAO customerDao;
+    //private EmployeeDAO employeeDao;
 
-    // the nsame of thsi function does not matter .. I usally make it something
-    // that means sonething to me as a human
+    // the name of this function does not matter .. I usually make it something
+    // that means something to me as a human
     @GetMapping(value = { "/index", "/index123" })
     public ModelAndView index(@RequestParam(required = false) String search) {
         // I always create this the same way as the first line of the function
@@ -40,9 +42,15 @@ public class IndexController {
             System.out.println(c.toString());
         }
 
+//        List<Employee> lastNames = employeeDao.findByLastname(search);
+//        for ( Employee e : lastNames ) {
+//            System.out.println(e.toString());
+//        }
+
         // once I have gathered soemthing that I want to show on the page then I add it to the model
         // the model is nothing more than a HashMap
         response.addObject("names", firstNames);
+        //response.addObject("names", lastNames);
 
         // when I am finished and I return from this function I give control back to the
         // DispatcherServlet to continue processing the request
