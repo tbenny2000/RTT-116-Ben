@@ -146,6 +146,23 @@
 
 
             <div class="mt-3 row justify-content-center">
+                <label for="employeeId" class="col-sm-2 col-form-label">Employee</label>
+                <div class="col-sm-10 col-lg-6">
+                    <select name="employeeId" id="employeeId" class="form-control">
+                        <option>None</option>
+                        <c:forEach var="employee" items="${employeesKey}">
+                            <option
+                                    value="${employee.id}"
+                                    <c:if test="${form.employeeId eq employee.id}">Selected</c:if>
+                                    >${employee.firstName} ${employee.lastName}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="mt-3 row justify-content-center">
                 <div class="col-sm-12 col-lg-8">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>

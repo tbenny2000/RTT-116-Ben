@@ -10,6 +10,7 @@ import lombok.extern.apachecommons.CommonsLog;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -35,6 +36,7 @@ import java.util.List;
 //@Slf4j  <-  this is from lombok and all it does is line 40
 
 //@Slf4j
+
 @CommonsLog
 @Controller
 public class CustomerController {
@@ -42,10 +44,13 @@ public class CustomerController {
     private static final Logger LOG = LoggerFactory.getLogger(CustomerController.class);
 
     @Autowired
-    private CustomerDAO customerDao;
+    private CustomerDAO customerDAO;
     @Autowired
-    private EmployeeDAO employeeDao;
+    private EmployeeDAO employeeDAO;
 
+
+
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/customer/search")
     public ModelAndView searchCustomer(@RequestParam(required = false) String firstName) {
         ModelAndView response = new ModelAndView();
@@ -57,7 +62,7 @@ public class CustomerController {
         response.addObject("search", firstName);
 
         if ( firstName != null ) {
-            List<Customer> customers = customerDao.findByFirstname(firstName);
+            List<Customer> customers = customerDAO.findByFirstname(firstName);
             response.addObject("customersKey", customers);
         }
         return response;
@@ -65,9 +70,13 @@ public class CustomerController {
 
 
 
+    // =================== 111111111111111
     @GetMapping("/customer/create")
     public ModelAndView createCustomer() {
         ModelAndView response = new ModelAndView();
+
+        List<Employee> employees = employeeDAO.findAllEmployees();
+        response.addObject("employeesKey", employees);
 
         LOG.debug("DEBUG LEVEL");
         LOG.info("INFO LEVEL");
@@ -79,16 +88,16 @@ public class CustomerController {
         return response;
     }
 
-
+    // ================ 22222222222222222 ====================
     @GetMapping("/customer/edit/{customerId}")
     public ModelAndView editCustomer(@PathVariable Integer customerId) {
         ModelAndView response = new ModelAndView();
 
         response.setViewName("customer/create");
 
-        LOG.debug("==============/EDITING CUSTOMER" + customerId + "===================");
+        LOG.debug("============== EDITING CUSTOMER" + customerId);
 
-        Customer customer = customerDao.findById(customerId);
+        Customer customer = customerDAO.findById(customerId);
 
         CreateCustomerFormBean form = new CreateCustomerFormBean();
 
@@ -100,20 +109,24 @@ public class CustomerController {
         form.setAddressLine1(customer.getAddressLine1());
         form.setCity(customer.getCity());
         form.setCountry(customer.getCountry());
+        //form.setEmployeeId(customer.getSalesRepEmployeeId());
+        // alternate form.setEmployeeId(customer.getEmployee().getId());
 
         response.addObject("form", form);
+
+        List<Employee> employees = employeeDAO.findAllEmployees();
+        response.addObject("employeesKey", employees);
 
         return response;
     }
 
 
 
-
+    // ==================== 333333333333 =====================
     @GetMapping("/customer/createCustomer")
     public ModelAndView createCustomerSubmit(@Valid CreateCustomerFormBean form, BindingResult bindingResult) {
         // this is called when the user clicks the submit button on the form
         ModelAndView response = new ModelAndView();
-        response.setViewName("customer/create");
 
         LOG.debug(form.toString());
 
@@ -122,15 +135,19 @@ public class CustomerController {
             for (ObjectError error : bindingResult.getAllErrors()) {
                 LOG.debug(error.toString());
             }
+            response.setViewName("customer/create");
             response.addObject("bindingResult", bindingResult);
             response.addObject("form", form);
+
+            List<Employee> employees = employeeDAO.findAllEmployees();
+            response.addObject("employeesKey", employees);
         } else {
             // when this is a create the id in the form will be null
             // when it is an edit the id in the form will be populated with the PK to edit
             // in either case we can tey to query the DB and its either found or not
             // if its not found in the DB its a create
             // if it is found in the DB than its an edit
-            Customer customer = customerDao.findById(form.getId());
+            Customer customer = customerDAO.findById(form.getId());
             if (customer == null) {
                 customer = new Customer();
             }
@@ -143,15 +160,15 @@ public class CustomerController {
             customer.setCity(form.getCity());
             customer.setCountry(form.getCountry());
 
-            Employee employee = employeeDao.findById(1056);
+            Employee employee = employeeDAO.findById(form.getEmployeeId());
             customer.setEmployee(employee);
 
-            customerDao.save(customer);
+            customerDAO.save(customer);
 
-            //LOG.debug("============== SAVING CUSTOMER" + customerId.getId() + "===================");
+            LOG.debug("============== SAVING CUSTOMER " + customer.getId());
 
             // in either case create or edit I now want to redirect to the edit url
-            response.setViewName("redirect:/customer/edit=" + customer.getId());
+            response.setViewName("redirect:/customer/edit/" + customer.getId());
         }
         return response;
     }
