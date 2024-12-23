@@ -4,6 +4,7 @@ import com.example.module309.database.dao.UserDAO;
 import com.example.module309.database.dao.UserRoleDAO;
 import com.example.module309.database.entity.User;
 import com.example.module309.database.entity.UserRole;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,6 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Slf4j
@@ -66,10 +68,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         // loop over our user roles from the database
         for (UserRole role : userRoles) {
-            // create a new simple granted authority for each user role in the database
+            // create a new simple granted authority for each user role in the databse
             SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRoleName());
             authorities.add(authority);
         }
+
         return authorities;
     }
 }

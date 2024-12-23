@@ -30,8 +30,8 @@ public class Order {
     private Date requiredDate;
 
     @Column(name = "shipped_date", columnDefinition = "DATE")
-    // this temorpal type has to match the database type .. in the case of shipped date the database
-    // does not contain the timeinformation
+    // this temporal type has to match the database type .. in the case of shipped date the database
+    // does not contain the time information
     @Temporal(TemporalType.DATE)
     private Date shippedDate;
 
@@ -45,5 +45,4 @@ public class Order {
             cascade = CascadeType.ALL)
     @ToString.Exclude
     private List<OrderDetail> orderDetails;
-
 }

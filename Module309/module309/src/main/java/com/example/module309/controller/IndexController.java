@@ -13,15 +13,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@Slf4j
 @Controller
 public class IndexController {
 
-    // essentially spring boot has created the dao for us when it stated up and is already in memory all we have to do is
-    // autowire it and we can .. this is analogous to creating a new DAO in module 305
+    // esentially spring boot has created the dao for us when it stated up and is already in memory all we have to do is
+    // autowire it and we can .. this is analagous to createing a new DAO in module 305
     @Autowired
-    private CustomerDAO customerDao;
-    //private EmployeeDAO employeeDao;
+    private CustomerDAO customerDAO;
 
     // the name of this function does not matter .. I usually make it something
     // that means something to me as a human
@@ -32,30 +30,37 @@ public class IndexController {
 
         // the goal of this controller method is to do 2 things
         // 1) establish a view name if there is to be an HTML page that goes with this
-        // #6 on the archtecture image converts "index" into "/WEB-INF/jsp/index.jsp"
+        // #6 on the architecture image converts "index" into "/WEB-INF/jsp/index.jsp"
         response.setViewName("index");
 
         // 2) load any information from the database that I need to display on the page
         // this could be dozens of queries if necessary
-        List<Customer> firstNames = customerDao.findByFirstname(search);
+        List<Customer> firstNames = customerDAO.findByFirstname(search);
         for ( Customer c : firstNames ) {
             System.out.println(c.toString());
         }
 
-//        List<Employee> lastNames = employeeDao.findByLastname(search);
-//        for ( Employee e : lastNames ) {
-//            System.out.println(e.toString());
-//        }
-
-        // once I have gathered soemthing that I want to show on the page then I add it to the model
-        // the model is nothing more than a HashMap
+        // once I have gathered something that I want to show on the page then I add it to the model
+        //  is nothing more than a HashMap
         response.addObject("names", firstNames);
-        //response.addObject("names", lastNames);
 
         // when I am finished and I return from this function I give control back to the
         // DispatcherServlet to continue processing the request
         // this is #5 in the architecture image
         return response;
+    }
+
+    @GetMapping("/customer/submit")
+    public ModelAndView customerSubmit(@RequestParam(required = false) String firstName,
+                                       @RequestParam(required = false) String lastName){
+
+        Customer customer = new Customer();
+        customer.setContactFirstname(firstName);
+        customer.setContactLastname(lastName);
+
+        customerDAO.save(customer);
+
+        return null;
     }
 
 
@@ -91,7 +96,7 @@ public class IndexController {
         // because Spring will automatically covert to JSON
         // in React we might actually create a specific DTO (Data Transport Object)
         // the DTO is essentially a custom built model for this function that return data as JSON
-        List<Customer> firstNames = customerDao.findByFirstname("Alexander");
+        List<Customer> firstNames = customerDAO.findByFirstname("Alexander");
         return firstNames;
     }
 
@@ -106,5 +111,4 @@ public class IndexController {
 
         return response;
     }
-
 }

@@ -10,7 +10,7 @@ import java.util.List;
 public interface EmployeeDAO extends JpaRepository<Employee, Long> {
 
     // This is a JPA/HIBERNATE/HQL/JQL
-    @Query("select e from Employee e where e.firstName = :firstName")
+    @Query("select e from Employee e where e.firstname = :firstName")
     List<Employee> findByFirstName(String firstName);
 
     Employee findById(Integer id);

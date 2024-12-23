@@ -4,14 +4,18 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Data
 @Getter
 @Setter
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "customers")
 public class Customer {
 
+    // To add a one-to-many relationship steps
+    // 1) Goto the example website and create the @OneToMany and @ManyToOne annotations
+    // 2) In the entity with the foreign key mark that colum as insertable = false and updatable = false
+    // 3) Add the @ToString.Exclude annotation to both sides
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -23,8 +27,8 @@ public class Customer {
     private Employee employee;
 
     // now that we have the @ManyToOne mapping using the same column name for the @JoinColumn
-    // hibernate is confused as the colum sales_rep_employee_id is not ambigous to hibernate
-    // to solve this problem, we make this field read only by adding insertable = false and updateable = false
+    // hibernate is confused as the colum sales_rep_employee_id is not ambiguous to hibernate
+    // to solve this problem, we make this field read only by adding insertable = false and updatable = false
     // TL;DR; - The foreign key must be marked as read only for hibernate
 
     @Column(name = "sales_rep_employee_id", insertable = false, updatable = false)
@@ -48,11 +52,11 @@ public class Customer {
     @Column(name = "address_line2")
     private String addressLine2;
 
-    @Column(name = "city")
-    private String city;
-
     @Column(name = "state")
     private String state;
+
+    @Column(name = "city")
+    private String city;
 
     @Column(name = "postal_code")
     private String postalCode;
@@ -61,22 +65,22 @@ public class Customer {
     private String country;
 
     @Column(name = "credit_limit", columnDefinition = "DECIMAL")
-    private double creditLimit;
+    private Double creditLimit;
 
-
+    // ToString method
     @Override
     public String toString() {
         return "Customer{" +
                 "id=" + id +
                 ", salesRepEmployeeId=" + salesRepEmployeeId +
                 ", customerName='" + customerName + '\'' +
-                ", contactLastName='" + contactLastname + '\'' +
-                ", contactFirstName='" + contactFirstname + '\'' +
+                ", contactLastname='" + contactLastname + '\'' +
+                ", contactFirstname='" + contactFirstname + '\'' +
                 ", phone='" + phone + '\'' +
                 ", addressLine1='" + addressLine1 + '\'' +
                 ", addressLine2='" + addressLine2 + '\'' +
-                ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
+                ", city='" + city + '\'' +
                 ", postalCode='" + postalCode + '\'' +
                 ", country='" + country + '\'' +
                 ", creditLimit=" + creditLimit +

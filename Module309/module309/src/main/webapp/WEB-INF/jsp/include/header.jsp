@@ -1,6 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -34,20 +33,30 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/index">Index</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/customer/search">Customer Search</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/customer/create">Create Customer</a>
-                    </li>
+                    <sec:authorize access="hasAuthority('CUSTOMER')">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/customer/search">Customer Search</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/customer/create">Create Customer</a>
+                        </li>
+                    </sec:authorize>
                     <sec:authorize access="!isAuthenticated()">
                         <li class="nav-item">
                             <a class="nav-link" href="/login/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login/signup">Signup</a>
                         </li>
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()">
                         <li class="nav-item">
                             <a class="nav-link" href="/login/logout">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link">
+                                <sec:authentication property="principal.username"/>
+                            </span>
                         </li>
                     </sec:authorize>
                     <sec:authorize access="hasAnyAuthority('ADMIN')">

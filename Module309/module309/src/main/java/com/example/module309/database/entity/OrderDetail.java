@@ -15,14 +15,12 @@ public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int Id;
-
+    private int id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "order_id", nullable = false)
     @ToString.Exclude
     private Order order;
-
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "product_id", nullable = false)
@@ -41,7 +39,7 @@ public class OrderDetail {
     @Column(name = "price_each", columnDefinition = "DECIMAL")
     private double priceEach;
 
-    @Column(name = "order_line_number")
+    @Column(name = "order_line_number", columnDefinition = "SMALLINT")
     private int orderLineNumber;
 
 }

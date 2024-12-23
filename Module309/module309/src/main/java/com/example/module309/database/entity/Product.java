@@ -3,6 +3,8 @@ package com.example.module309.database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "products")
 @AllArgsConstructor
@@ -15,7 +17,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int Id;
+    private int id;
 
     @Column(name = "product_code")
     private String productCode;
@@ -24,7 +26,7 @@ public class Product {
     private String productName;
 
     @Column(name = "productline_id")
-    private int productLineId;
+    private int productlineId;
 
     @Column(name = "product_scale")
     private String productScale;
@@ -43,4 +45,8 @@ public class Product {
 
     @Column(name = "msrp", columnDefinition = "DECIMAL")
     private double msrp;
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<OrderDetail> orderDetails;
 }
